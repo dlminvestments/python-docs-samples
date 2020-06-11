@@ -2,3 +2,4 @@
 google-cloud-ndb==0.1.0
 # [END ndb_version]
 flask==1.0.2
+rsa>=4.1 # not directly required, pinned by Snyk to avoid a vulnerability
