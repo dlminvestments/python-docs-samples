@@ -1,3 +1,2 @@
-google-cloud-trace==0.21.0
 
 Flask==1.0.2
