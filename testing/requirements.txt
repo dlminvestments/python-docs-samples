@@ -2,7 +2,6 @@ beautifulsoup4==4.7.1
 funcsigs==1.0.2
 mysql-python==1.2.5; python_version < "3.0"
 PyCrypto==2.6.1
-pyyaml==5.4
 responses==0.10.5
 WebTest==2.0.35
 webapp2==2.5.2
