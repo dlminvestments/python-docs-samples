@@ -1,3 +1,0 @@
-
-google-cloud-monitoring<=0.28.1
-pillow>=7.1.0 # not directly required, pinned by Snyk to avoid a vulnerability
