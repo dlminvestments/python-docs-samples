@@ -1,6 +1,5 @@
 beautifulsoup4==4.7.1
 funcsigs==1.0.2
-mock==4.0.3
 mysql-python==1.2.5; python_version < "3.0"
 PyCrypto==2.6.1
 pyyaml==5.4
