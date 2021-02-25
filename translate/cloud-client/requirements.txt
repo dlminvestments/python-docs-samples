@@ -1,2 +1,0 @@
-google-cloud-translate==1.4.0
-google-cloud-storage==1.14.0
