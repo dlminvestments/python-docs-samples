@@ -18,32 +18,39 @@ from google.appengine.ext import ndb
 
 
 class LongIntegerProperty(ndb.StringProperty):
-    def _validate(self, value):
+    @staticmethod
+    def _validate(value):
         if not isinstance(value, (int, long)):
             raise TypeError('expected an integer, got %s' % repr(value))
 
-    def _to_base_type(self, value):
+    @staticmethod
+    def _to_base_type(value):
         return str(value)  # Doesn't matter if it's an int or a long
 
-    def _from_base_type(self, value):
+    @staticmethod
+    def _from_base_type(value):
         return long(value)  # Always return a long
 
 
 class BoundedLongIntegerProperty(ndb.StringProperty):
     def __init__(self, bits, **kwds):
-        assert isinstance(bits, int)
-        assert bits > 0 and bits % 4 == 0  # Make it simple to use hex
+        if not isinstance(bits, int):
+            raise AssertionError
+        if not (bits > 0 and bits % 4 == 0):
+            raise AssertionError
         super(BoundedLongIntegerProperty, self).__init__(**kwds)
         self._bits = bits
 
     def _validate(self, value):
-        assert -(2 ** (self._bits - 1)) <= value < 2 ** (self._bits - 1)
+        if -(2 ** (self._bits - 1)) > value:
+            raise AssertionError
 
     def _to_base_type(self, value):
         # convert from signed -> unsigned
         if value < 0:
             value += 2 ** self._bits
-        assert 0 <= value < 2 ** self._bits
+        if 0 > value:
+            raise AssertionError
         # Return number as a zero-padded hex string with correct number of
         # digits:
         return '%0*x' % (self._bits // 4, value)
@@ -64,8 +71,10 @@ class MyModel(ndb.Model):
 
 class FuzzyDate(object):
     def __init__(self, first, last=None):
-        assert isinstance(first, date)
-        assert last is None or isinstance(last, date)
+        if not isinstance(first, date):
+            raise AssertionError
+        if not (last is None or isinstance(last, date)):
+            raise AssertionError
         self.first = first
         self.last = last or first
 
@@ -79,13 +88,17 @@ class FuzzyDateProperty(ndb.StructuredProperty):
     def __init__(self, **kwds):
         super(FuzzyDateProperty, self).__init__(FuzzyDateModel, **kwds)
 
-    def _validate(self, value):
-        assert isinstance(value, FuzzyDate)
+    @staticmethod
+    def _validate(value):
+        if not isinstance(value, FuzzyDate):
+            raise AssertionError
 
-    def _to_base_type(self, value):
+    @staticmethod
+    def _to_base_type(value):
         return FuzzyDateModel(first=value.first, last=value.last)
 
-    def _from_base_type(self, value):
+    @staticmethod
+    def _from_base_type(value):
         return FuzzyDate(value.first, value.last)
 
 
