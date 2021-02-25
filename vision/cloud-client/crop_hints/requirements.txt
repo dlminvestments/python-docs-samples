@@ -1,2 +1,0 @@
-google-cloud-vision==0.35.2
-pillow==8.0.1
