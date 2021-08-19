@@ -32,4 +32,3 @@ with models.DAG(
         default_args=default_dag_args) as dag:
     start = dummy_operator.DummyOperator(task_id='oops_a_cycle')
     end = dummy_operator.DummyOperator(task_id='oops_a_cycle')
-    start >> end

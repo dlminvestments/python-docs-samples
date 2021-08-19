@@ -36,4 +36,3 @@ with models.DAG(
     variable_example = bash_operator.BashOperator(
         task_id='variable_example',
         bash_command='echo project_id=' + models.Variable.get('gcp_project'))
-    start >> variable_example >> end

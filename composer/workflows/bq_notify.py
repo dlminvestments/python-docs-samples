@@ -171,19 +171,3 @@ with models.DAG(
         task_id='delete_bq_dataset',
         bash_command='bq rm -r -f %s' % bq_dataset_name,
         trigger_rule=trigger_rule.TriggerRule.ALL_DONE)
-
-    # Define DAG dependencies.
-    (
-        make_bq_dataset
-        >> bq_recent_questions_query
-        >> export_questions_to_gcs
-        >> delete_bq_dataset
-    )
-    (
-        bq_recent_questions_query
-        >> bq_most_popular_query
-        >> bq_read_most_popular
-        >> delete_bq_dataset
-    )
-    export_questions_to_gcs >> email_summary
-    bq_read_most_popular >> email_summary

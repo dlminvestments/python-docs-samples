@@ -96,10 +96,6 @@ with models.DAG(
         # Setting trigger_rule to ALL_DONE causes the cluster to be deleted
         # even if the Dataproc job fails.
         trigger_rule=trigger_rule.TriggerRule.ALL_DONE)
-
-    # [START composer_hadoop_steps]
-    # Define DAG dependencies.
-    create_dataproc_cluster >> run_dataproc_hadoop >> delete_dataproc_cluster
     # [END composer_hadoop_steps]
 
 # [END composer_hadoop]
