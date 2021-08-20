@@ -60,11 +60,5 @@ with models.DAG(
     goodbye_bash = bash_operator.BashOperator(
         task_id='bye',
         bash_command='echo Goodbye.')
-    # [END composer_simple_operators]
-
-    # [START composer_simple_relationships]
-    # Define the order in which the tasks complete by using the >> and <<
-    # operators. In this example, hello_python executes before goodbye_bash.
-    hello_python >> goodbye_bash
     # [END composer_simple_relationships]
 # [END composer_simple]

@@ -176,5 +176,3 @@ with models.DAG(
             source_format='AVRO',
             write_disposition='WRITE_TRUNCATE'
         )
-
-        start >> BQ_to_GCS >> GCS_to_GCS >> GCS_to_BQ >> end

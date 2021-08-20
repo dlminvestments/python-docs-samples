@@ -23,12 +23,6 @@ from gcp_devrel.testing.appengine import (
     testbed)
 import six
 
-(login)
-(pytest_configure)
-(pytest_runtest_call)
-(run_tasks)
-(testbed)
-
 
 def pytest_ignore_collect(path, config):
     """Skip App Engine tests in python 3 or if no SDK is available."""
