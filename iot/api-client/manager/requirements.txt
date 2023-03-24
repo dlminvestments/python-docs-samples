@@ -1,5 +1,5 @@
 
-gcp-devrel-py-tools==0.0.15
+gcp-devrel-py-tools==0.0.16
 google-api-python-client==1.12.8
 google-auth-httplib2==0.0.3
 oauth2client==4.1.3
