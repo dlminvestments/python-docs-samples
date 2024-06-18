@@ -3,3 +3,4 @@ google-auth-httplib2==0.0.3
 google-api-python-client==1.12.8
 flask==2.2.5
 werkzeug>=3.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
