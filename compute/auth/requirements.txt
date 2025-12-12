@@ -1,4 +1,4 @@
 
 google-auth-httplib2==0.0.3
 
-urllib3>=1.25.9 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
